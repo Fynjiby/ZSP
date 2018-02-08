@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="h1-main">Основные виды выполняемых работ</h1>
+<ul>
+{% for groupservice in object_list %}
+    <li style = "list-style-type:none; margin-bottom: 10px;"><a href="/services/groupservices/{{ groupservice.id }}"><img class="picsvg" src="/media/{{ groupservice.icone }}" alt="{{ groupservice.first_name }}">{{ groupservice.first_name }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

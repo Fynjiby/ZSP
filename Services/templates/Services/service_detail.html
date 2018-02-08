@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="service">
+        <h2>{{ service.title }}</h2>
+        <br/>
+        <p>{{ service.text|safe }}</p>
+    </div>
+{% endblock %}

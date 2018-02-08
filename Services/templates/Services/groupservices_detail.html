@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="service">
+        <h2>{{ groupservices.first_name }}</h2>
+        <br/>
+        {{ groupservices.text|safe }}
+        <br/>
+        <p>Виды работ:</p>
+        {% for result in groupservices.get_services %}
+            <li><a href="/services/{{ result.id }}">{{ result.title }}</a></li>
+        {% endfor %}
+    </div>
+{% endblock %}
