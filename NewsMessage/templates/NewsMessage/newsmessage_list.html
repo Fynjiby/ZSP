@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="h1-main">Новости</h1>
+
+{% for newsmessage in object_list %}
+    <a href="/news/{{ newsmessage.id }}" ><span class="date">{{ newsmessage.published_date|date:"d E Y" }}: </span>{{ newsmessage.title }}</a>
+    <br/><br/>
+{% endfor %}
+
+{% endblock %}

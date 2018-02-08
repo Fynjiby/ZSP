@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="h1-main">география деятельности</h1>
+<!--Thanks https://github.com/alexTitakoff/svg-map-Russia-->
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" baseProfile="tiny" id="svg2" x="0px" y="0px" width="950px" height="620px" viewBox="0 0 1090 620" xml:space="preserve" xmlns:xml="http://www.w3.org/XML/1998/namespace">
+{% for zone in object_list %}
+    <path {{ zone.svgpath|safe }} class="{{ zone.class_zone }}"></path>
+{% endfor %}
+</svg>
+{% for zone in object_list %}
+    <div class="indicator indicator{{ zone.html_id }}" style="display: none;">
+        <div>{{ zone.title }}</div>
+        <ul id="zone{{ zone.html_id }}"  style="margin-bottom: 0;">
+        {% for project in zone.get_projects %}
+            <li style="font-size: 14px;">{{ project.title }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endfor %}
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+        
+        var timesArray = [];
+        $('path').hover(function(e) {
+            
+            $('.indicator').hide();
+            $('path').css('fill', '#fff');
+            $(this).css('fill', '#009c68');
+            $('path').not(this).css('fill', '#cad1d5');
+            $('path.inside').not(this).css('fill', '#92d1bc');
+            $('path.non-inside').css('fill', '#cad1d5');
+            var id = jQuery.data(this);
+            var $this = this;
+            timesArray[id] = setTimeout(function() {
+                var pos = $($this).offset();
+                var Xinner = e.pageX - 5;
+                var Yinner = e.pageY - 5;
+            
+                $('.indicator' + $($this).attr('id')).css({
+                    'top': Yinner,
+                    'left': Xinner
+                }).show();
+                timesArray[id] = "";
+            }, 500);
+            
+        }, function() {
+            var id = jQuery.data(this);
+            if (timesArray[id])
+            {   
+                clearTimeout(timesArray[id]);
+            }
+        });
+
+        $('.container').hover(function(e) {
+
+        }, function() {
+            $('.indicator').hide();
+            $('path').css('fill', '#cad1d5');
+            $('path.inside').css('fill', '#92d1bc');
+        });
+
+    </script>
+{% endblock %}

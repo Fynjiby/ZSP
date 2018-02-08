@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="project">
+        <h2>{{ project.title }}</h2>
+        <br/>
+        <p>{{ project.text|safe }}</p>
+    </div>
+{% endblock %}

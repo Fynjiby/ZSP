@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="h1-main">все проекты</h1>
+<ul type="disc">
+{% for project in object_list %}
+    <li>{{ project.title }}</li>
+{% endfor %}
+</ul>
+{% endblock %}
