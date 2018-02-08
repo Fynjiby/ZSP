@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="h1-main">Лицензии и сертификаты</h1>
+{% for license in object_list %}
+<div class="lic">
+       {{ license.text|safe }}
+        <br/>
+        <div class="row">
+        {% for group in license.get_group_img %}    
+            {% for image in group.get_img %}
+                {% if forloop.counter == 1 %}
+                    <a href="/media/{{ image.img }}" data-toggle="lightbox" data-gallery="gallery{{ group.id }}" class="col-sm-4" data-title="{{ group.title }}">
+                        <div style="display: inline-block; height: 400px; margin-bottom: 50px;">    
+                            <img src="/media/{{ image.img }}" class="img-fluid" style="height: 100%;" alt="{{ group.title }}">
+                            <p style="color: #000; margin-top: 5px;">{{ group.title }}</p>
+                        </div>
+                    </a>
+                {% else %}
+                    <div data-toggle="lightbox" data-gallery="gallery{{ group.id }}" data-remote="/media/{{ image.img }}" data-title="{{ group.title }}"></div>
+                {% endif %}
+                    
+            {% endfor %}
+        {% endfor %}
+        </div>
+</div>
+{% endfor %}
+{% endblock %}

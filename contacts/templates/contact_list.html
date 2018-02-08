@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="h1-main">Адреса и реквизиты</h1>
+{% for contact in object_list %}
+<div class="contact">
+        <h3>{{ contact.title }}</h3>
+        <br/>
+        {{ contact.text|safe }}
+        <div width=400px>
+        {{ contact.yaMaps|safe }}
+        </div>
+</div>
+{% endfor %}
+<br/>
+<div class="col-xs-12 col-sm-9" style = "margin-bottom: 30px;">
+    <div class="page-header">
+        <h2>Обратная связь</h2>
+    </div>
+<form role="form" action="/contacts/" method="post">{% csrf_token %}
+    {{ form.non_field_errors }}
+	<div class="form-group">
+	  <label for="id_subject">Тема:</label>
+	  {{ form.subject.errors }}
+	  {{ form.subject }}
+	</div>
+	<div>
+	  <label for="id_sender">E-mail:</label>
+	  {{ form.sender.errors }}
+	  {{ form.sender }}
+	</div>
+	<div>
+	  <label for="id_message">Сообщение:</label>
+	  {{ form.message.errors }}
+	  {{ form.message }}
+	</div>
+	<br/>
+	<input class="btn btn-primary" type="submit" value="Отправить сообщение"/>
+	<br/>
+</form>
+</div>
+{% endblock %}
