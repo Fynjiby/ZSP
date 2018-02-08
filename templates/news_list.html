@@ -1,0 +1,4 @@
+{% for new in news_list %}
+   <a href="/news/{{ new.id }}" class="news-massage"><span class="date">{{ new.published_date|date:"d E Y" }}: </span>{{ new.title }}</a>
+    <br/><br/>
+{% endfor %}

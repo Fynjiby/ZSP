@@ -1,0 +1,8 @@
+{% for AboutCompany in AboutCompanys %}
+<h1 class="h1-main">
+{{ AboutCompany.title_text }}                            
+</h1>
+<div class="p-justify">
+{{ AboutCompany.main_text|safe }}
+</div>
+{% endfor %}

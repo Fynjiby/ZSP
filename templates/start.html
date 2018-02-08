@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load show_about_company %}
+{% load show_group_services %}
+{% load show_news_list %}
+{% load show_mini_geograthy %}
+{% block content %}
+<div class="row">
+
+                <div class="col-md-8">
+                    <div class="main-right">
+                        {% show_about_company %}
+                        <div class="row row-pic">
+                            <p><strong>Основные виды выполняемых работ:</strong></p>
+                            {% show_group_services %}
+                        </div>
+                    </div>
+
+
+                    <!--<img class="footer-logo" src="images/pic1.svg" alt="ООО ЗЕМСТРОЙПРОЕКТ" style="margin-top:5px;" />-->
+                </div>
+                <div class="col-md-4">
+                    <div class="main-left">
+                        <div class="news">
+                            <div class="news-header">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                <a href="/news/">Новости:</a>
+                            </div>
+                            {% show_news_list %}
+                        </div>
+                        <div class="geography">
+                            <div class="geography-header">
+                                <span class="glyphicon glyphicon-globe"></span>
+                                <a href="/projects/geograthy/">География деятельности:
+                                {% show_mini_geograthy %}
+                                </a>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+{% endblock %}

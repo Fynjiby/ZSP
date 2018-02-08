@@ -1,0 +1,7 @@
+{% for group in groups %}
+   <div class="col-md-6 col-pic">
+        <a class="actions-a" href="/services/groupservices/{{ group.id }}">
+            <img class="picsvg" src="/media/{{ group.icone }}" alt="{{ group.first_name }}"> {{ group.first_name }}
+        </a>
+    </div>
+{% endfor %}

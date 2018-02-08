@@ -1,0 +1,5 @@
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" baseProfile="tiny" id="svg2" x="0px" y="0px" width="950px" height="210px" viewBox="0 0 1090 620" xml:space="preserve" xmlns:xml="http://www.w3.org/XML/1998/namespace">
+{% for zone in zone_list %}
+    <path {{ zone.svgpath|safe }} class="{{ zone.class_zone }}"></path>
+{% endfor %}
+</svg>
